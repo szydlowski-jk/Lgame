@@ -1,0 +1,25 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    background-color: black;
+    height: 100%;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#gc {
+    background-color: #202020;
+    border: solid white 1px;
+    width: 400px;
+    height: 400px;
+    max-height: 100vw;
+    max-width: 100vh;
+//    min-width: 100vw;
+    // width: 100vh;
+    // height: 100vw;
+
+}
