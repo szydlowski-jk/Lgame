@@ -9,6 +9,10 @@ body {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
@@ -17,12 +21,12 @@ body {
           align-items: center;
 }
 
+h1 {
+  color: white;
+}
+
 #gc {
   background-color: #202020;
   border: solid white 1px;
-  width: 400px;
-  height: 400px;
-  max-height: 100vw;
-  max-width: 100vh;
 }
 /*# sourceMappingURL=style.css.map */
