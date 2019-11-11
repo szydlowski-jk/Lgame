@@ -1,6 +1,6 @@
 'use strict'
 
-let game = new LGame;
+let game;
 
 function handleResize() {
     const gc = document.getElementById('gc')
@@ -9,10 +9,11 @@ function handleResize() {
     let size = Math.min( window.innerWidth , window.innerHeight )
     gc.width = Math.floor( (size * 0.8 ) / 4) * 4;
     gc.height = Math.floor( ( size * 0.8 ) / 4) * 4;
-    game.draw(gc);
+    game.draw();
 }
 
 window.onload = function() {
+    game = new LGame(document.getElementById('gc'))
     this.handleResize()
     window.onresize = handleResize;
 
