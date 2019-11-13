@@ -17,6 +17,7 @@ class LGame {
         this.redl = [1, 2, 6, 10]
         this.bluel = [5, 9, 13, 14]
         this.neutral = [0, 15]
+        this.clicked = []
 
         this.cellSize = this.gc.width / 4
 
@@ -24,6 +25,7 @@ class LGame {
         this.redColor = COLOR_RED_ACTIVE
         this.blueColor = COLOR_BLUE_ACTIVE
         this.neutralColor = COLOR_NEUTRAL_ACTIVE
+        this.drawColor = COLOR_RED_ACTIVE
 
         gc.onmousemove = (e) => {
             this.omt = this.mt
@@ -36,6 +38,30 @@ class LGame {
             if (this.omt != this.mt) {
                 this.draw()
             }
+        }
+
+        gc.onmousedown = (e) => {
+            if (this.clicked.includes(this.mt)) {
+                this.clicked.splice(this.clicked.indexOf(this.mt), 1)
+                this.mt = -1
+            } else {
+                this.clicked.push(this.mt)
+                if (this.clicked.length == 4) {
+                    this.clicked.splice(0)
+                }
+            }
+
+            this.draw()
+        }
+
+        // gc.onmouseup = (e) => {
+            // this.clicked.pop(this.mt)
+            // this.draw()
+        // }
+
+        gc.onmouseleave = (e) => {
+            this.mt = -1
+            this.draw()
         }
 
     }
@@ -52,10 +78,12 @@ class LGame {
             this.redColor = COLOR_RED_DRAW
             this.blueColor = COLOR_BLUE_ACTIVE
             this.neutralColor = COLOR_NEUTRAL_ACTIVE
+            this.drawColor = COLOR_RED_ACTIVE
         } else if ( this.player == 1 ) {
             this.redColor = COLOR_RED_DRAW
             this.blueColor = COLOR_BLUE_ACTIVE
             this.neutralColor = COLOR_NEUTRAL_ACTIVE
+            this.drawColor = COLOR_BLUE_ACTIVE
         }
 
 
@@ -68,6 +96,10 @@ class LGame {
                 ctx.fillStyle = this.neutralColor
             } else {
                 ctx.fillStyle = "#000000"
+            }
+
+            if (this.clicked.includes(i)) {
+                ctx.fillStyle = this.drawColor
             }
 
             if (this.mt == i) {
